@@ -42,21 +42,21 @@ const AboutUs = () => {
       </section> */}
 
       {/* About Us */}
-      <section id="about-part" className="pt-16 pb-10 px-6 lg:px-0">
+      <section  className="pt-16 pb-6 px-6 lg:px-0">
         <div className="container mx-auto flex flex-col lg:flex-row items-center">
           <div className="lg:w-2/3">
             <div className="section-title mb-8">
-              <h3 className="text-2xl font-semibold">About us</h3>
-              <h5 className="pt-2 text-xl font-medium">
+              <h3 className="text-3xl font-semibold">About us</h3>
+              <h5 className="pt-2 text-xl font-medium text-green-500">
                 WELCOME TO J.D GLOBAL SCHOOL
               </h5>
             </div>
-            <div className="about-cont text-gray-700 leading-relaxed">
+            <div className=" text-gray-700 leading-relaxed">
               <p className="text-justify mb-6">
                 Our school motto stands for the school's belief that knowledge
                 leads to enlightenment and prosperity.
               </p>
-              <ul className="list-disc pl-6 space-y-3">
+              <ul className="list-disc pl-7 space-y-3">
                 <li>Our mission "Every great dream begins with a dreamer."</li>
                 <li>
                   Established in 2018, under the aegis of Leading Business
@@ -95,11 +95,16 @@ const AboutUs = () => {
               className="w-full rounded-lg shadow-md"
             />
           </div>
+         
         </div>
+        <button className="">
+          Read More
+      </button>
       </section>
+      
 
       {/* Counter Section */}
-      <div
+      {/* <div
         id="counter-part"
         className="bg-cover pt-10 pb-28 bg-center"
         style={{ backgroundImage: 'url(images/bg-2.jpg)' }}
@@ -132,7 +137,7 @@ const AboutUs = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

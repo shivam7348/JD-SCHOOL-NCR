@@ -50,7 +50,7 @@ const AutoSlider = () => {
 
   return (
     <div
-      className="w-full flex items-center justify-center p-4"
+      className="w-full flex items-center justify-center p-4 relative z-0"
       onKeyDown={handleKeyDown}
       tabIndex={0}
       role="region"
@@ -58,7 +58,7 @@ const AutoSlider = () => {
     >
       <div className="w-full max-w-11xl">
         <div
-          className="relative h-[250px] sm:h-[400px] md:h-[500px] lg:h-[700px] overflow-hidden rounded-lg shadow-2xl"
+          className="relative h-[250px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden rounded-lg shadow-2xl"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >

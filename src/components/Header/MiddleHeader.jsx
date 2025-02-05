@@ -4,7 +4,7 @@ const MiddleHeader = () => {
     const [showForm, setShowForm] = useState(false);
 
   return (
-    <div className="flex flex-col md:flex-row justify-between items-center p-4 bg-gray-100 shadow-md">
+    <div className="flex flex-col md:flex-row justify-between items-center p-4 bg-gray-100 shadow-md z-20 ">
     {/* Left Side - Logo & Name */}
     <div className="flex flex-col md:flex-row items-center mx-auto text-center md:text-left">
       <img
@@ -16,7 +16,7 @@ const MiddleHeader = () => {
         J.D GLOBAL SCHOOL
       </span>
     </div>
-
+  
     {/* Right Side - Mobile Number & Admission Button */}
     <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 mt-3 md:mt-0">
       <img
@@ -34,7 +34,7 @@ const MiddleHeader = () => {
         ADMISSION
       </button>
     </div>
-
+  
     {/* Admission Form Modal */}
     {showForm && (
       <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 p-4">
@@ -47,21 +47,21 @@ const MiddleHeader = () => {
               className="w-full p-2 border border-gray-300 rounded-md mb-4"
               placeholder="Enter your name"
             />
-
+  
             <label className="block mb-2">Mobile Number:</label>
             <input
               type="text"
               className="w-full p-2 border border-gray-300 rounded-md mb-4"
               placeholder="Enter your mobile number"
             />
-
+  
             <label className="block mb-2">Email:</label>
             <input
               type="email"
               className="w-full p-2 border border-gray-300 rounded-md mb-4"
               placeholder="Enter your email"
             />
-
+  
             <button
               type="submit"
               className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700"
@@ -69,7 +69,7 @@ const MiddleHeader = () => {
               Submit
             </button>
           </form>
-
+  
           <button
             className="mt-4 w-full text-center text-red-600"
             onClick={() => setShowForm(false)}
@@ -80,6 +80,7 @@ const MiddleHeader = () => {
       </div>
     )}
   </div>
+  
   );
 };
 
