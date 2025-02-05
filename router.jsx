@@ -7,6 +7,10 @@ import Gallery from "./src/components/Pages/Gallery";
 import Home from "./src/components/Pages/Home";
 import About from "./src/components/Pages/About/About";
 import DirectorMessage from "./src/components/Pages/About/DirectorMessage";
+import Vission from "./src/components/Pages/About/Vission";
+import Mission from "./src/components/Pages/About/Mission";
+import Admission from "./src/components/Pages/About/Admission";
+import AcademicZone from "./src/components/Pages/AcedmicZone/AcademicZone";
 
 
 
@@ -28,6 +32,26 @@ const router = createBrowserRouter([
           path: "about/message",
           element: <DirectorMessage/>
       },
+      { path: "/about/vision", element: <Vission/>},
+      { path: "/about/mission", element: <Mission/>},
+      {
+        path: "admission",
+        element: <Admission/>
+      },
+      {
+        path: "academic-zone",
+        element: <AcademicZone/>
+      },
+      // acdemice nested routes 
+      {},
+      {},
+      {},
+      {},
+      {
+        path: "sessioni-info",
+        element: 
+      },
+
       {
         path: "contact",
         element: <Contact />,

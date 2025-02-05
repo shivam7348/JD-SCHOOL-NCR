@@ -2,6 +2,7 @@ import AutoSlider from "../Slider/AutoSlider";
 import AboutUs from "./About/About";
 import ApplicationSection from "./ApplicationSection";
 import CourseSection from "./CourseSection";
+import VideoFeatureSection from "./VideoFeatureSection";
 
 function Home() {
   return (
@@ -10,6 +11,7 @@ function Home() {
       <AboutUs/>
       <ApplicationSection/>
       <CourseSection/>
+      <VideoFeatureSection/>
     </>
   );
 }
