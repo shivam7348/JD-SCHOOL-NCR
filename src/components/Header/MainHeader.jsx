@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
+
 import { Link } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi";
 
@@ -115,37 +117,37 @@ const Header = () => {
   
           {/* Infrastructure Dropdown */}
           <li className="relative group">
-            <Link to="/academic-zone" className="hover:text-yellow-500">
+            <Link to="/infrastructure" className="hover:text-yellow-500">
               INFRASTRUCTURE
             </Link>
             <ul className="absolute hidden group-hover:block bg-white shadow-md p-2 space-y-1 w-52 z-20">
               <li>
-                <Link to="/academic-zone/activities" className="hover:text-yellow-500 block px-4 py-2">
+                <Link to="/infrastructure/transport-facilities" className="hover:text-yellow-500 block px-4 py-2">
                   TRANSPORT FACILITY
                 </Link>
               </li>
               <li>
-                <Link to="/academic-zone/tc-enquiry" className="hover:text-yellow-500 block px-4 py-2">
+                <Link to="/infrastructure/schoolcampus" className="hover:text-yellow-500 block px-4 py-2">
                   SCHOOL CAMPUS
                 </Link>
               </li>
               <li>
-                <Link to="/academic-zone/annual-planner" className="hover:text-yellow-500 block px-4 py-2">
+                <Link to="/infrastructure/laboratory" className="hover:text-yellow-500 block px-4 py-2">
                   LABORATORY
                 </Link>
               </li>
               <li>
-                <Link to="/academic-zone/annual-planner" className="hover:text-yellow-500 block px-4 py-2">
+                <Link to="/infrastructure/smartclasses" className="hover:text-yellow-500 block px-4 py-2">
                   SMART CLASSES
                 </Link>
               </li>
               <li>
-                <Link to="/academic-zone/annual-planner" className="hover:text-yellow-500 block px-4 py-2">
+                <Link to="/infrastructure/library" className="hover:text-yellow-500 block px-4 py-2">
                   LIBRARY
                 </Link>
               </li>
               <li>
-                <Link to="/academic-zone/annual-planner" className="hover:text-yellow-500 block px-4 py-2">
+                <Link to="/infrastructure/sportsground" className="hover:text-yellow-500 block px-4 py-2">
                   SPORTS GROUND
                 </Link>
               </li>
