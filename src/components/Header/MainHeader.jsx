@@ -1,175 +1,151 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
-
 import { Link } from "react-router-dom";
-import { FiMenu, FiX } from "react-icons/fi";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="shadow-md ">
-    <div className="container mx-auto px-2 py-6 flex justify-between items-center">
-      {/* Logo Section */}
-      <Link to="/" className="text-xl font-bold text-red-800"></Link>
-  
-      {/* Mobile Menu Button */}
+    <header className="shadow-md sticky top-0 bg-white z-50">
+      <div className="container mx-auto px-4 py-3 md:py-4 flex justify-between items-center">
+        {/* Logo Section */}
+        {/* <Link to="/" className="text-xl font-bold text-red-800">
+          Logo
+        </Link> */}
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden text-xl p-2"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
+        >
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            {menuOpen ? (
+              <path d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
+        </button>
+
+        {/* Navigation Menu */}
+        <nav
+          className={`absolute md:static left-0 right-0 top-full w-full md:w-auto bg-white md:bg-transparent ${
+            menuOpen ? "block" : "hidden"
+          } md:block shadow-lg md:shadow-none`}
+        >
+          <ul className="md:flex md:items-center text-sm md:text-base font-semibold divide-y md:divide-y-0 divide-gray-100">
+            <NavItem to="/">HOME</NavItem>
+
+            {/* About Dropdown */}
+            <NavDropdown title="ABOUT US" items={[
+              { to: "/about/message", label: "DIRECTOR MESSAGE" },
+              { to: "/about/vision", label: "VISION" },
+              { to: "/about/mission", label: "MISSION" }
+            ]} />
+
+            <NavItem to="/admission">ADMISSION</NavItem>
+
+            {/* Academic Zone Dropdown */}
+            <NavDropdown title="ACADEMIC ZONE" items={[
+              { to: "/academic-zone/activities", label: "ACTIVITIES" },
+              { to: "/academic-zone/tc-enquiry", label: "TC ENQUIRY" },
+              { to: "/academic-zone/annual-planner", label: "ANNUAL PLANNER" },
+              { to: "/academic-zone/exam-schedule", label: "EXAMINATION SCHEDULE" }
+            ]} />
+
+            {/* Session Information Dropdown */}
+            <NavDropdown title="SESSION INFORMATION" items={[
+              { to: "/sessioni-info/schooltiming", label: "SCHOOL TIMING" },
+              { to: "/sessioni-info/freeregulation", label: "FREE REGULATION" },
+              { to: "/sessioni-info/rulecode-condt", label: "RULE OF CODE AND CONDUCT" }
+            ]} />
+
+            {/* Infrastructure Dropdown */}
+            <NavDropdown title="INFRASTRUCTURE" items={[
+              { to: "/infrastructure/transport-facilities", label: "TRANSPORT FACILITY" },
+              { to: "/infrastructure/schoolcampus", label: "SCHOOL CAMPUS" },
+              { to: "/infrastructure/laboratory", label: "LABORATORY" },
+              { to: "/infrastructure/smartclasses", label: "SMART CLASSES" },
+              { to: "/infrastructure/library", label: "LIBRARY" },
+              { to: "/infrastructure/sportsground", label: "SPORTS GROUND" }
+            ]} />
+
+            <NavItem to="/gallery">GALLERY</NavItem>
+            <NavItem to="/contact">CONTACT</NavItem>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  );
+};
+
+// Helper components for cleaner code
+const NavItem = ({ to, children }) => (
+  <li className="md:mx-2">
+    <Link
+      to={to}
+      className="block px-4 py-3 md:py-2 hover:text-yellow-500 transition-colors duration-200"
+    >
+      {children}
+    </Link>
+  </li>
+);
+
+const NavDropdown = ({ title, items }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <li className="relative group md:mx-2">
       <button
-        className="md:hidden text-xl"
-        onClick={() => setMenuOpen(!menuOpen)}
+        className="w-full text-left px-4 py-3 md:py-2 hover:text-yellow-500 transition-colors duration-200 flex justify-between items-center"
+        onClick={() => setIsOpen(!isOpen)}
       >
-        {menuOpen ? <FiX /> : <FiMenu />}
+        {title}
+        <svg
+          className={`w-4 h-4 transition-transform duration-200 md:hidden ${
+            isOpen ? "transform rotate-180" : ""
+          }`}
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path d="M19 9l-7 7-7-7" />
+        </svg>
       </button>
-  
-      {/* Navigation Menu */}
-      <nav
-        className={`absolute md:static left-0 top-24 w-full md:w-auto bg-white md:bg-transparent md:flex ${menuOpen ? "block" : "hidden"}`}
+
+      <ul
+        className={`
+          md:absolute md:left-0 md:top-full 
+          bg-gray-50 md:bg-white 
+          md:shadow-lg 
+          md:min-w-[200px]
+          md:hidden md:group-hover:block
+          ${isOpen ? "block" : "hidden"}
+        `}
       >
-        <ul className="md:flex md:items-center gap-15 text-md  md:px-0 py-4 md:py-0 font-semibold -top-4">
-          <li>
-            <Link to="/" className="hover:text-yellow-500">
-              HOME
+        {items.map((item) => (
+          <li key={item.to}>
+            <Link
+              to={item.to}
+              className="block px-6 py-2 hover:bg-gray-100 hover:text-yellow-500 transition-colors duration-200 whitespace-nowrap"
+            >
+              {item.label}
             </Link>
           </li>
-  
-          {/* About Dropdown */}
-          <li className="relative group">
-            <Link to="/about" className="hover:text-yellow-500">
-              ABOUT US
-            </Link>
-            <ul className="absolute hidden group-hover:block bg-white shadow-md p-2  space-y-1 w-50 z-20  ">
-              <li>
-                <Link to="/about/message" className="hover:text-yellow-500 block px-4 py-2  bg-gray-500 outline-none">
-                  DIRECTOR MESSAGE
-                </Link>
-              </li>
-              <li>
-                <Link to="/about/vision" className="hover:text-yellow-500 block px-4 py-2">
-                  VISION
-                </Link>
-              </li>
-              <li>
-                <Link to="/about/mission" className="hover:text-yellow-500 block px-4 py-2">
-                  MISSION
-                </Link>
-              </li>
-            </ul>
-          </li>
-  
-          <li>
-            <Link to="/admission" className="hover:text-yellow-500">
-              ADMISSION
-            </Link>
-          </li>
-  
-          {/* Academic Zone Dropdown */}
-          <li className="relative group">
-            <Link to="/academic-zone" className="hover:text-yellow-500">
-              ACADEMIC ZONE
-            </Link>
-            <ul className="absolute hidden group-hover:block bg-white shadow-md p-2 space-y-1 w-52 z-20">
-              <li>
-                <Link to="/academic-zone/activities" className="hover:text-yellow-500 block px-4 py-2">
-                  ACTIVITIES
-                </Link>
-              </li>
-              <li>
-                <Link to="/academic-zone/tc-enquiry" className="hover:text-yellow-500 block px-4 py-2">
-                  TC ENQUIRY
-                </Link>
-              </li>
-              <li>
-                <Link to="/academic-zone/annual-planner" className="hover:text-yellow-500 block px-4 py-2">
-                  ANNUAL PLANNER
-                </Link>
-              </li>
-              <li>
-                <Link to="/academic-zone/exam-schedule" className="hover:text-yellow-500 block px-4 py-2">
-                  EXAMINATION SCHEDULE
-                </Link>
-              </li>
-            </ul>
-          </li>
-  
-          {/* Session Information Dropdown */}
-          <li className="relative group">
-            <Link to="/sessioni-info" className="hover:text-yellow-500">
-              SESSION INFORMATION
-            </Link>
-            <ul className="absolute hidden group-hover:block bg-white shadow-md p-2 space-y-1 w-52 z-20">
-              <li>
-                <Link to="/sessioni-info/schooltiming" className="hover:text-yellow-500 block px-4 py-2">
-                  SCHOOL TIMING
-                </Link>
-              </li>
-              <li>
-                <Link to="/sessioni-info/freeregulation" className="hover:text-yellow-500 block px-4 py-2">
-                  FREE REGULATION
-                </Link>
-              </li>
-              <li>
-                <Link to="/sessioni-info/rulecode-condt" className="hover:text-yellow-500 block px-4 py-2">
-                  RULE OF CODE AND CONDUCT
-                </Link>
-              </li>
-            </ul>
-          </li>
-  
-          {/* Infrastructure Dropdown */}
-          <li className="relative group">
-            <Link to="/infrastructure" className="hover:text-yellow-500">
-              INFRASTRUCTURE
-            </Link>
-            <ul className="absolute hidden group-hover:block bg-white shadow-md p-2 space-y-1 w-52 z-20">
-              <li>
-                <Link to="/infrastructure/transport-facilities" className="hover:text-yellow-500 block px-4 py-2">
-                  TRANSPORT FACILITY
-                </Link>
-              </li>
-              <li>
-                <Link to="/infrastructure/schoolcampus" className="hover:text-yellow-500 block px-4 py-2">
-                  SCHOOL CAMPUS
-                </Link>
-              </li>
-              <li>
-                <Link to="/infrastructure/laboratory" className="hover:text-yellow-500 block px-4 py-2">
-                  LABORATORY
-                </Link>
-              </li>
-              <li>
-                <Link to="/infrastructure/smartclasses" className="hover:text-yellow-500 block px-4 py-2">
-                  SMART CLASSES
-                </Link>
-              </li>
-              <li>
-                <Link to="/infrastructure/library" className="hover:text-yellow-500 block px-4 py-2">
-                  LIBRARY
-                </Link>
-              </li>
-              <li>
-                <Link to="/infrastructure/sportsground" className="hover:text-yellow-500 block px-4 py-2">
-                  SPORTS GROUND
-                </Link>
-              </li>
-            </ul>
-          </li>
-  
-          <li>
-            <Link to="/gallery" className="hover:text-yellow-500">
-              GALLERY
-            </Link>
-          </li>
-  
-          <li>
-            <Link to="/contact" className="hover:text-yellow-500">
-              CONTACT
-            </Link>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-  
+        ))}
+      </ul>
+    </li>
   );
 };
 
