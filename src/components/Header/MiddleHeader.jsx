@@ -28,7 +28,7 @@ const MiddleHeader = () => {
         📞 8882229658
       </span>
       <button
-        className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
+        className="px-4 py-2 bg-yellow-500 text-black rounded-lg hover:bg-blue-800"
         onClick={() => setShowForm(true)}
       >
         ADMISSION

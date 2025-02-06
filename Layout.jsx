@@ -13,7 +13,7 @@ function Layout() {
       <MiddleHeader/>
       <MainHeader />
       <Outlet />
-      {/* <Footer/> */}
+      <Footer/>
     </>
   );
 }

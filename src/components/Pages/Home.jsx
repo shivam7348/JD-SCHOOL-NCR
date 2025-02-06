@@ -1,6 +1,7 @@
 import AutoSlider from "../Slider/AutoSlider";
 import AboutUs from "./About/About";
 import ApplicationSection from "./ApplicationSection";
+import Contact from "./Contact";
 import CourseSection from "./CourseSection";
 import Testimonials from "./Testimonials";
 import VicePrincipalSection from "./VicePrincipalSection";
@@ -16,6 +17,7 @@ function Home() {
       <VideoFeatureSection/>
       <VicePrincipalSection/>
       <Testimonials/>
+      <Contact/>
     </>
   );
 }

@@ -16,7 +16,7 @@ const TopHeader = () => {
         {/* Email Section */}
         <div className="flex items-center space-x-2 mt-2 md:mt-0 md:w-1/2 justify-center md:justify-end">
           <FaEnvelope className="h-6 w-6 cursor-pointer text-blue-300 hover:text-blue-400" />
-          <span className="text-sm md:text-base">info@example.com</span> {/* Add Email */}
+          <span className="text-sm md:text-base">jdglobal.school@gmail.com</span> {/* Add Email */}
         </div>
 
       </div>
